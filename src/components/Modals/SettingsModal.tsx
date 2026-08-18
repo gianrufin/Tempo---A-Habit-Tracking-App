@@ -31,6 +31,7 @@ interface SettingsModalProps {
   userPrefs: UserPreferences;
   onSavePreferences: (prefs: UserPreferences) => void;
   onDataImported: () => void;
+  onOpenReadme?: () => void;
 }
 
 const SOUND_OPTIONS: UserPreferences['soundChoice'][] = [
@@ -47,6 +48,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   userPrefs,
   onSavePreferences,
   onDataImported,
+  onOpenReadme,
 }) => {
   if (!isOpen) return null;
 
@@ -402,6 +404,23 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               <div className="p-3 bg-rose-950/40 border border-rose-500/30 rounded-xl flex items-center gap-2.5 text-xs text-rose-300">
                 <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
                 <span>{updateError}</span>
+              </div>
+            )}
+
+            {/* Readme & APK Direct Download Link */}
+            {onOpenReadme && (
+              <div className="pt-1">
+                <button
+                  type="button"
+                  onClick={() => {
+                    onClose();
+                    onOpenReadme();
+                  }}
+                  className="w-full py-2 px-3 rounded-xl bg-purple-950/50 hover:bg-purple-900/60 border border-purple-500/30 text-amber-300 text-xs font-semibold flex items-center justify-center gap-2 transition-colors"
+                >
+                  <FileCode className="w-3.5 h-3.5" />
+                  <span>View Project README & Direct APK Download</span>
+                </button>
               </div>
             )}
           </div>

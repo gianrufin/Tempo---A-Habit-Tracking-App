@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Settings, Flame, Zap } from 'lucide-react';
+import { Search, Settings, Flame, Zap, FileText, Download } from 'lucide-react';
 import { UserPreferences } from '../types';
 
 interface TopBarProps {
@@ -9,6 +9,7 @@ interface TopBarProps {
   completedTodayCount: number;
   onOpenSearch: () => void;
   onOpenSettings: () => void;
+  onOpenReadme?: () => void;
 }
 
 export const TopBar: React.FC<TopBarProps> = ({
@@ -18,6 +19,7 @@ export const TopBar: React.FC<TopBarProps> = ({
   completedTodayCount,
   onOpenSearch,
   onOpenSettings,
+  onOpenReadme,
 }) => {
   const getGreeting = () => {
     const hour = new Date().getHours();
@@ -63,6 +65,20 @@ export const TopBar: React.FC<TopBarProps> = ({
             {completedTodayCount}/{activeHabitCount} done ({progressPercent}%)
           </span>
         </div>
+
+        {/* Readme & Direct APK Download */}
+        {onOpenReadme && (
+          <button
+            id="topbar-readme-btn"
+            onClick={onOpenReadme}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-purple-900/80 to-amber-900/60 hover:from-purple-800 hover:to-amber-800 text-amber-300 hover:text-amber-200 border border-amber-500/30 text-xs font-semibold shadow-sm transition-all"
+            title="Read README & Download APK"
+            aria-label="README & Download APK"
+          >
+            <Download className="w-3.5 h-3.5 text-amber-400" />
+            <span className="hidden sm:inline">APK & README</span>
+          </button>
+        )}
 
         {/* Search button */}
         <button

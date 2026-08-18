@@ -36,6 +36,7 @@ import { QuickAddModal } from './components/Modals/QuickAddModal';
 import { RecapModal } from './components/Modals/RecapModal';
 import { SettingsModal } from './components/Modals/SettingsModal';
 import { SearchModal } from './components/Modals/SearchModal';
+import { ReadmeModal } from './components/Modals/ReadmeModal';
 
 export const App: React.FC = () => {
   // Primary persistent state
@@ -56,6 +57,7 @@ export const App: React.FC = () => {
   const [settingsModalOpen, setSettingsModalOpen] = useState(false);
   const [quickAddModalOpen, setQuickAddModalOpen] = useState(false);
   const [recapModalOpen, setRecapModalOpen] = useState(false);
+  const [readmeModalOpen, setReadmeModalOpen] = useState(false);
 
   const [habitDetailOpen, setHabitDetailOpen] = useState(false);
   const [selectedHabitForDetail, setSelectedHabitForDetail] = useState<Habit | null>(null);
@@ -347,6 +349,7 @@ export const App: React.FC = () => {
           completedTodayCount={completedCountToday}
           onOpenSearch={() => setSearchModalOpen(true)}
           onOpenSettings={() => setSettingsModalOpen(true)}
+          onOpenReadme={() => setReadmeModalOpen(true)}
         />
 
         {/* Main Screen Content */}
@@ -543,6 +546,16 @@ export const App: React.FC = () => {
         userPrefs={userPrefs}
         onSavePreferences={setUserPrefs}
         onDataImported={refreshAllData}
+        onOpenReadme={() => setReadmeModalOpen(true)}
+      />
+
+      <ReadmeModal
+        isOpen={readmeModalOpen}
+        onClose={() => setReadmeModalOpen(false)}
+        onOpenSettingsUpdates={() => {
+          setReadmeModalOpen(false);
+          setSettingsModalOpen(true);
+        }}
       />
 
       <SearchModal
