@@ -15,7 +15,7 @@
 Choose any of the verified direct download links below to install the Tempo Android app:
 
 <p align="center">
-  <a href="https://github.com/gianrufin/tempo-android/releases/download/debug-latest/tempo-android-release.apk">
+  <a href="https://github.com/gianrufin/Tempo---A-Habit-Tracking-App/releases/download/debug-latest/tempo-android-release.apk">
     <img src="https://img.shields.io/badge/Direct%20Download-Tempo%20APK%20(Latest%20Build)-8B5CF6?style=for-the-badge&logo=android&logoColor=white" alt="Download APK" />
   </a>
 </p>
@@ -24,10 +24,10 @@ Choose any of the verified direct download links below to install the Tempo Andr
 
 | Download Method | Link | Description |
 |---|---|---|
-| **Primary Release APK** | [📥 tempo-android-release.apk](https://github.com/gianrufin/tempo-android/releases/download/debug-latest/tempo-android-release.apk) | Latest compiled APK release asset |
-| **Mirror Download** | [📥 app-debug.apk](https://github.com/gianrufin/tempo-android/releases/download/debug-latest/app-debug.apk) | Secondary debug release mirror |
-| **GitHub Releases Hub** | [📦 View All Releases & Tags](https://github.com/gianrufin/tempo-android/releases) | Full changelogs and release history |
-| **GitHub Actions CI** | [⚙️ CI Automated Build Artifacts](https://github.com/gianrufin/tempo-android/actions) | Latest automated APK workflow runs |
+| **Primary Release APK** | [📥 tempo-android-release.apk](https://github.com/gianrufin/Tempo---A-Habit-Tracking-App/releases/download/debug-latest/tempo-android-release.apk) | Latest compiled APK release asset |
+| **Mirror Download** | [📥 app-debug.apk](https://github.com/gianrufin/Tempo---A-Habit-Tracking-App/releases/download/debug-latest/app-debug.apk) | Secondary debug release mirror |
+| **GitHub Releases Hub** | [📦 View All Releases & Tags](https://github.com/gianrufin/Tempo---A-Habit-Tracking-App/releases) | Full changelogs and release history |
+| **GitHub Actions CI** | [⚙️ CI Automated Build Artifacts](https://github.com/gianrufin/Tempo---A-Habit-Tracking-App/actions) | Latest automated APK workflow runs |
 
 > 💡 **Note for new GitHub repos**: When pushing to your repository, the included `.github/workflows/build-debug-apk.yml` workflow automatically builds the APK and publishes it to the `debug-latest` release tag.
 
@@ -74,8 +74,8 @@ Choose any of the verified direct download links below to install the Tempo Andr
 ### Android (Gradle)
 ```bash
 # Clone the repository
-git clone https://github.com/gianrufin/tempo-android.git
-cd tempo-android
+git clone https://github.com/gianrufin/Tempo---A-Habit-Tracking-App.git
+cd Tempo---A-Habit-Tracking-App
 
 # Build Debug APK
 ./gradlew assembleDebug

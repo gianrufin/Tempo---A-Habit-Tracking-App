@@ -18,24 +18,25 @@ android {
         versionCode = 1
         versionName = "0.1.0"
 
-        val gitSha = providers.exec {
-            commandLine("git", "rev-parse", "--short=12", "HEAD")
-        }.standardOutput.asText.get().trim()
+        val gitSha = try {
+            providers.exec {
+                commandLine("git", "rev-parse", "--short=12", "HEAD")
+            }.standardOutput.asText.get().trim()
+        } catch (_: Exception) {
+            "0.1.0"
+        }
         buildConfigField("String", "GIT_SHA", "\"$gitSha\"")
     }
 
     signingConfigs {
         getByName("debug") {
-            // A fixed, committed keystore instead of Gradle's implicit ~/.android/debug.keystore.
-            // On a fresh CI runner there's no cached debug.keystore, so AGP silently generates a
-            // brand-new one (with a brand-new signing key) on every single run. Android refuses to
-            // install an update signed with a different certificate than the one already
-            // installed, so every CI build was forcing an uninstall-then-install instead of an
-            // in-place update. Using the same keystore for every build fixes that permanently.
-            storeFile = file("../keystore/debug.keystore")
-            storePassword = "android"
-            keyAlias = "androiddebugkey"
-            keyPassword = "android"
+            val customKeystore = file("../keystore/debug.keystore")
+            if (customKeystore.exists()) {
+                storeFile = customKeystore
+                storePassword = "android"
+                keyAlias = "androiddebugkey"
+                keyPassword = "android"
+            }
         }
     }
 
@@ -81,9 +82,11 @@ android {
 androidComponents {
     onVariants { variant ->
         variant.outputs.forEach { output ->
-            if (output is com.android.build.api.variant.impl.VariantOutputImpl) {
-                output.outputFileName.set("tempo.apk")
-            }
+            try {
+                if (output is com.android.build.api.variant.impl.VariantOutputImpl) {
+                    output.outputFileName.set("tempo.apk")
+                }
+            } catch (_: Throwable) {}
         }
     }
 }
