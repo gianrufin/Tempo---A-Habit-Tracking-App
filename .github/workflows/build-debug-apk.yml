@@ -1,9 +1,11 @@
-name: Build debug APK
+name: Build Android APK & Release
 
 on:
   push:
     branches:
-      - claude/android-habit-planner-design-ril8qt
+      - '**'
+    tags:
+      - 'v*'
   workflow_dispatch: {}
 
 permissions:
@@ -13,7 +15,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
@@ -25,26 +27,51 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Build debug APK
+      - name: Build Android Debug APK
         run: ./gradlew assembleDebug --stacktrace
 
-      - name: Locate APK
-        id: apk
+      - name: Prepare APK Artifacts
+        id: prep_apk
         run: |
-          APK_PATH=$(find app/build/outputs/apk/debug -name "*.apk" | head -n 1)
-          echo "path=$APK_PATH" >> "$GITHUB_OUTPUT"
+          mkdir -p release_artifacts
+          APK_ORIGIN=$(find app/build/outputs/apk/debug -name "*.apk" | head -n 1)
+          echo "Found original APK at: $APK_ORIGIN"
+          cp "$APK_ORIGIN" release_artifacts/tempo-android-release.apk
+          cp "$APK_ORIGIN" release_artifacts/tempo.apk
+          cp "$APK_ORIGIN" release_artifacts/app-debug.apk
+          echo "artifacts_dir=release_artifacts" >> "$GITHUB_OUTPUT"
 
-      - name: Publish as a GitHub Release
+      - name: Upload APK Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tempo-apk
+          path: release_artifacts/*
+          retention-days: 30
+
+      - name: Publish to GitHub Release (debug-latest)
         uses: softprops/action-gh-release@v2
+        if: github.event_name != 'pull_request'
         with:
           tag_name: debug-latest
-          name: Tempo debug build (latest)
+          name: Tempo Android Build (Latest)
           body: |
-            Auto-built from the latest push to `claude/android-habit-planner-design-ril8qt`.
-            Download `tempo.apk` below and install it on your phone
-            (you'll need to allow "install unknown apps" for your browser).
-          prerelease: true
-          make_latest: false
-          files: ${{ steps.apk.outputs.path }}
+            ## ⚡ Tempo Android APK Download
+            Auto-built from commit `${{ github.sha }}`.
+            
+            ### Download Files:
+            - **`tempo-android-release.apk`**: Direct Android package installer
+            - **`tempo.apk`**: Quick package mirror
+            - **`app-debug.apk`**: Standard Gradle debug build
+            
+            ### Installation:
+            1. Download the APK file on your Android device.
+            2. Open the file and enable **"Install unknown apps"** when prompted.
+            3. Enjoy Tempo!
+          prerelease: false
+          make_latest: true
+          files: |
+            release_artifacts/tempo-android-release.apk
+            release_artifacts/tempo.apk
+            release_artifacts/app-debug.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

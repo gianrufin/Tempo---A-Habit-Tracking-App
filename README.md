@@ -10,26 +10,30 @@
 
 ---
 
-## 📲 Direct APK Download
+## 📲 Direct Android APK Downloads
 
-Download the latest release of the Tempo Android APK directly:
+Choose any of the verified direct download links below to install the Tempo Android app:
 
 <p align="center">
-  <a href="https://github.com/gianrufin/tempo-android/releases/latest/download/tempo-android-release.apk">
-    <img src="https://img.shields.io/badge/Direct%20Download-Tempo%20APK%20(v1.0.0)-8B5CF6?style=for-the-badge&logo=android&logoColor=white" alt="Download APK" />
-  </a>
-  <br />
-  <a href="https://github.com/gianrufin/tempo-android/releases/latest">
-    <strong>📦 Browse all GitHub Releases & Changelogs</strong>
+  <a href="https://github.com/gianrufin/tempo-android/releases/download/debug-latest/tempo-android-release.apk">
+    <img src="https://img.shields.io/badge/Direct%20Download-Tempo%20APK%20(Latest%20Build)-8B5CF6?style=for-the-badge&logo=android&logoColor=white" alt="Download APK" />
   </a>
 </p>
 
-> **Direct Download Link:**  
-> [https://github.com/gianrufin/tempo-android/releases/latest/download/tempo-android-release.apk](https://github.com/gianrufin/tempo-android/releases/latest/download/tempo-android-release.apk)
+### 🔗 Direct Download Links & Mirrors
+
+| Download Method | Link | Description |
+|---|---|---|
+| **Primary Release APK** | [📥 tempo-android-release.apk](https://github.com/gianrufin/tempo-android/releases/download/debug-latest/tempo-android-release.apk) | Latest compiled APK release asset |
+| **Mirror Download** | [📥 app-debug.apk](https://github.com/gianrufin/tempo-android/releases/download/debug-latest/app-debug.apk) | Secondary debug release mirror |
+| **GitHub Releases Hub** | [📦 View All Releases & Tags](https://github.com/gianrufin/tempo-android/releases) | Full changelogs and release history |
+| **GitHub Actions CI** | [⚙️ CI Automated Build Artifacts](https://github.com/gianrufin/tempo-android/actions) | Latest automated APK workflow runs |
+
+> 💡 **Note for new GitHub repos**: When pushing to your repository, the included `.github/workflows/build-debug-apk.yml` workflow automatically builds the APK and publishes it to the `debug-latest` release tag.
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
 ### 🌅 Chronological Ascending Habit Sequencing
 - Habits and routines are dynamically sorted in **ascending order from Morning to Evening** (`Morning (8:00 AM)` &rarr; `Afternoon (1:00 PM)` &rarr; `Evening (6:00 PM)` &rarr; `Night (9:30 PM)` &rarr; `Anytime`).
@@ -57,9 +61,9 @@ Download the latest release of the Tempo Android APK directly:
 
 ## 📥 Android Installation Instructions
 
-1. Download the `tempo-android-release.apk` using the button above or from [GitHub Releases](https://github.com/gianrufin/tempo-android/releases).
+1. Tap **[Download tempo-android-release.apk](https://github.com/gianrufin/tempo-android/releases/download/debug-latest/tempo-android-release.apk)** (or download from the [Releases page](https://github.com/gianrufin/tempo-android/releases)).
 2. On your Android device, open your browser's Downloads or File Manager.
-3. Tap `tempo-android-release.apk`.
+3. Tap `tempo-android-release.apk` (or `app-debug.apk`).
 4. If prompted, toggle **Allow from this source** (Enable installation of unknown apps).
 5. Tap **Install** and open **Tempo**!
 
@@ -79,7 +83,7 @@ cd tempo-android
 # Build Release APK
 ./gradlew assembleRelease
 ```
-The generated APK will be available in `app/build/outputs/apk/debug/` or `app/build/outputs/apk/release/`.
+The generated APK will be available in `app/build/outputs/apk/debug/app-debug.apk`.
 
 ### Web App (Vite + React)
 ```bash
