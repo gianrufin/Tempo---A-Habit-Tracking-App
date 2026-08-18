@@ -303,7 +303,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                     type="text"
                     value={githubRepo}
                     onChange={e => setGithubRepo(e.target.value)}
-                    placeholder="gianrufin/tempo-android"
+                    placeholder="gianrufin/Tempo-Habit"
                     className="flex-1 px-3 py-1.5 bg-[#120b22] border border-purple-500/20 rounded-xl text-white font-mono text-xs focus:outline-none focus:border-purple-400"
                   />
                 </div>
