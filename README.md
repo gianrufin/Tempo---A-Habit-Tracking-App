@@ -10,26 +10,24 @@
 
 ---
 
-## 📲 Direct Android APK Downloads
+## 📲 How to Download & Install the Android APK
 
-Choose any of the verified direct download links below to install the Tempo Android app:
+### 1. ⚡ Instant In-App Download (Direct from Browser)
+In the running web or mobile application, open the top header and click **"APK & README"** &rarr; tap **"Instant Direct Download"**. The `.apk` will download directly to your device without relying on external CDN links.
 
-<p align="center">
-  <a href="https://github.com/gianrufin/Tempo-Habit/releases/download/debug-latest/tempo-android-release.apk">
-    <img src="https://img.shields.io/badge/Direct%20Download-Tempo%20APK%20(Latest%20Build)-8B5CF6?style=for-the-badge&logo=android&logoColor=white" alt="Download APK" />
-  </a>
-</p>
+---
 
-### 🔗 Direct Download Links & Mirrors
+### 2. 📦 Download from GitHub Actions / Releases
 
-| Download Method | Link | Description |
+| Resource | Link | Note |
 |---|---|---|
-| **Primary Release APK** | [📥 tempo-android-release.apk](https://github.com/gianrufin/Tempo-Habit/releases/download/debug-latest/tempo-android-release.apk) | Latest compiled APK release asset |
-| **Mirror Download** | [📥 app-debug.apk](https://github.com/gianrufin/Tempo-Habit/releases/download/debug-latest/app-debug.apk) | Secondary debug release mirror |
-| **GitHub Releases Hub** | [📦 View All Releases & Tags](https://github.com/gianrufin/Tempo-Habit/releases) | Full changelogs and release history |
-| **GitHub Actions CI** | [⚙️ CI Automated Build Artifacts](https://github.com/gianrufin/Tempo-Habit/actions) | Latest automated APK workflow runs |
+| **⚙️ GitHub Actions (Build & Run APK)** | [GitHub Actions Workflow Runs](https://github.com/gianrufin/Tempo-Habit/actions) | Click `Run workflow` or push a commit to build the APK |
+| **📦 GitHub Releases Hub** | [View Releases & Tags](https://github.com/gianrufin/Tempo-Habit/releases) | Contains released packages once CI finishes |
+| **📥 Direct Release APK Link** | [Download tempo-android-release.apk](https://github.com/gianrufin/Tempo-Habit/releases/download/debug-latest/tempo-android-release.apk) | Available once GitHub Actions completes |
+| **🔗 Repository Link** | [GitHub Repository](https://github.com/gianrufin/Tempo-Habit) | Source code and workflow files |
 
-> 💡 **Note for GitHub Actions**: When pushing to the repository, `.github/workflows/build-debug-apk.yml` automatically builds the APK and publishes it to the `debug-latest` release tag.
+> ℹ️ **Why would a direct GitHub release link show 404?**  
+> GitHub direct download URLs (`github.com/.../releases/download/...`) only become active **after** the GitHub Actions build workflow has run at least once in your repo. Once the workflow in `.github/workflows/build-debug-apk.yml` finishes, the APK asset is automatically published to the `debug-latest` release tag.
 
 ---
 
@@ -61,15 +59,15 @@ Choose any of the verified direct download links below to install the Tempo Andr
 
 ## 📥 Android Installation Instructions
 
-1. Tap **[Download tempo-android-release.apk](https://github.com/gianrufin/Tempo-Habit/releases/download/debug-latest/tempo-android-release.apk)** (or download from the [Releases page](https://github.com/gianrufin/Tempo-Habit/releases)).
+1. Download the `.apk` file (via the in-app **APK & README** button or from [GitHub Actions/Releases](https://github.com/gianrufin/Tempo-Habit/actions)).
 2. On your Android device, open your browser's Downloads or File Manager.
-3. Tap `tempo-android-release.apk` (or `app-debug.apk`).
+3. Tap `tempo-android-v1.0.0.apk` (or `tempo-android-release.apk`).
 4. If prompted, toggle **Allow from this source** (Enable installation of unknown apps).
 5. Tap **Install** and open **Tempo**!
 
 ---
 
-## 🛠️ Building From Source
+## 🛠️ Building Locally From Source
 
 ### Android (Gradle)
 ```bash
